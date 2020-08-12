@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Hello MAFAKA</title>
+</head>
+<body>
+<div align="center">
+
+    <h1>Users manager</h1>
+
+    <h3><a href="/new">New User</a></h3>
+
+    <table border="1">
+        <caption th:text = "Users"></caption>
+        <thead>
+        <tr>
+            <th> Name </th>
+            <th> lastName </th>
+            <th> Age </th>
+            <th> Action </th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="user : ${users}">
+            <td><span th:text="${user.name}"> </span></td>
+            <td><span th:text="${user.lastName}"> </span></td>
+            <td><span th:text="${user.age}"> </span></td>
+
+            <td>
+                <a th:href = "@{/edit(id=${user.id})}">Edit</a>
+
+                <a th:href="@{/delete(id=${user.id})}">Delete</a>
+            </td>
+        </tr>
+        </tbody>
+    </table>
+</div>
+</body>
+</html>
