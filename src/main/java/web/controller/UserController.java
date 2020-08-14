@@ -34,7 +34,7 @@ public class UserController {
 
     @RequestMapping(value = "/update", method = RequestMethod.POST)
     public String saveEditUser(@ModelAttribute("user") User user) {
-        userService.save(user);
+        userService.update(user);
         return "redirect:/";
     }
 }

@@ -4,6 +4,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import web.dao.UserRepository;
+import web.dao.UserRepositoryImpl;
 import web.model.User;
 
 import java.util.List;
@@ -24,11 +25,13 @@ public class UserService {
     }
 
     public User get(Long id) {
-        return repo.findById(id).get();
+        return repo.findById(id);
     }
 
     public void delete(Long id) {
         repo.deleteById(id);
     }
+
+    public void update(User user) {repo.update(user);}
 
 }
