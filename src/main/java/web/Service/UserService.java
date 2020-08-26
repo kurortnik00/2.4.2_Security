@@ -5,33 +5,26 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import web.dao.UserRepository;
 import web.dao.UserRepositoryImpl;
+import web.model.Role;
 import web.model.User;
 
 import java.util.List;
+import java.util.Set;
 
-@Service
-@Transactional
-public class UserService {
 
-    @Autowired
-    UserRepository repo;
+public interface UserService {
 
-    public void save(User user) {
-        repo.save(user);
-    }
+    public void save(User user);
 
-    public List<User> listAll() {
-        return (List<User>) repo.findAll();
-    }
+    public List<User> listAll();
 
-    public User get(Long id) {
-        return repo.findById(id);
-    }
+    public User get(Long id);
 
-    public void delete(Long id) {
-        repo.deleteById(id);
-    }
+    public void delete(Long id);
 
-    public void update(User user) {repo.update(user);}
+    public void update(User user);
+
+    User findByUsername(String username);
+
 
 }

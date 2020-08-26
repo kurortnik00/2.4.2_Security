@@ -5,6 +5,10 @@
     <title>Hello MAFAKA</title>
 </head>
 <body>
+
+<div align="right">
+    <a href="/logout">Log out</a>
+</div>
 <div align="center">
 
     <h1>Users manager</h1>
@@ -16,20 +20,26 @@
         <thead>
         <tr>
             <th> Name </th>
-            <th> lastName </th>
+            <th> password </th>
             <th> Age </th>
+            <th> Role </th>
             <th> Action </th>
         </tr>
         </thead>
         <tbody>
         <tr th:each="user : ${users}">
-            <td><span th:text="${user.name}"> </span></td>
-            <td><span th:text="${user.lastName}"> </span></td>
+            <td><span th:text="${user.username}"> </span></td>
+            <td><span th:text="${user.password}"> </span></td>
             <td><span th:text="${user.age}"> </span></td>
-
+            <td>
+                <div th:if="${user.roles != null}">
+                    <div th:each="role : ${user.roles}">
+                        <span th:text="${role.name}"></span>
+                    </div>
+                </div>
+            </td>
             <td>
                 <a th:href = "@{/edit(id=${user.id})}">Edit</a>
-
                 <a th:href="@{/delete(id=${user.id})}">Delete</a>
             </td>
         </tr>
